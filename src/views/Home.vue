@@ -2,22 +2,26 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <h1>Learno</h1>
+    <div class="quiz-container">
+      <Quiz></Quiz>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import Quiz from '@/components/Quiz.vue'
 export default {
   name: 'Home',
   components: {
+    Quiz
   },
 }
 </script>
 
 <style lang="scss" scoped>
-  html * {
-    font-family: "Fira Sans", sans-serif;
-    color: $color1;
+  .quiz-container {
+    display: flex;
+    justify-content: center;
   }
 </style>
