@@ -1,10 +1,12 @@
 <template>
   <div id="header" class="shadow">
     <div class="logo">
-      <h1>Learno</h1>
+      <router-link to="/"><h1>Learno</h1></router-link>
+      <!-- <h1>Learno</h1> -->
     </div>
     <div class="nav">
-      <div id="header">
+      <div class="link">
+        <router-link to="/projects">Projects</router-link>
       </div>
     </div>
   </div>
@@ -21,18 +23,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  @import '~@/scss/_colors.scss';
   #header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     position: relative;
     margin: 0;
     background-color: #fff;
   }
 
-  .logo {
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .logo {
+    margin: 0 20px;
+  }
+
+  .link {
+    margin: 20px;
   }
 
   .shadow {
@@ -43,6 +55,15 @@ export default {
 
   h1 {
     margin: 20px 0;
+  }
+
+  a {
+    &:hover {
+      color: $color-link-hover;
+      h1 {
+        color: $color-link-hover;
+      }
+    }
   }
 
 </style>

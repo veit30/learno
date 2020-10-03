@@ -24,7 +24,6 @@ export default {
   },
   created() {
     let project = this.getProjectById(0);
-    console.log(project);
     this.questions = project.questions;
   }
 }

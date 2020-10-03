@@ -15,8 +15,6 @@ export default {
 }
 </script>
 
-<style>
-@import './scss/_fonts.scss';
-@import './scss/_colors.scss';
-@import './scss/_general.scss';
+<style lang="scss">
+@import '~@/scss/globals.scss';
 </style>
