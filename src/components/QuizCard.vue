@@ -1,12 +1,12 @@
 <template>
   <div class="quiz-card card-shadow">
     <div class="question">
-      {{question.text}}
+      {{item.text}}
     </div>
     <div class="answer-wrapper">
-      <div class="answer" v-for="a in answers" :key="a.id">
-        <input type="radio" :name="'answer-'+question.id" :value="a.text">
-        <label for="answer">{{a.text}}</label>
+      <div class="answer" v-for="answer in item.answers" :key="answer.id">
+        <input type="radio" :name="'ag-'+item.id" :id="'ag-'+item.id+'-a-'+answer.id" :value="answer.text">
+        <label :for="'ag-'+item.id+'-a-'+answer.id">{{answer.text}}</label>
       </div>
     </div>
   </div>
@@ -19,10 +19,7 @@ export default {
   components: {
 
   },
-  props: ["question", "answers", "description"],
-  methods: {
-
-  }
+  props: ["item"],
 }
 </script>
 

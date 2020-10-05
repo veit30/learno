@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Projects from '../views/Projects.vue'
+import Project from '../views/Project.vue'
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     component: Projects
   },
   {
+    path: '/project/:id',
+    name: 'Project',
+    component: Project
+  },
+  {
     path: '/:pathMatch(.*)',
     name: 'Not Found',
     redirect: '/'
@@ -30,7 +36,6 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  mode: 'history',
   routes
 })
 

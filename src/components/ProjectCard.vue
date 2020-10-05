@@ -1,18 +1,13 @@
 <template>
-  <div class="project-card" @click="redirectToProject">
+  <div class="project-card">
     <div id="edit-button">
-      <div @click.stop="openContextMenu">
+      <div @click.stop="$emit('open-context', $event)">
         <p class="noselect secondary-text">...</p>
       </div>
     </div>
     <div id="project-info">
-      <h1 class="noselect">{{ name }}</h1>
-      <p class="noselect" :class="{ 'secondary-text': description === '' }">{{ description === "" ? "No description" : description }}</p>
-    </div>
-    <div id="project-type">
-      <div>
-        <h2 class="secondary-text noselect">{{ type === "quiz" ? "Quiz" : "Register" }}</h2>
-      </div>
+      <h1 class="noselect" @click='openProject'>{{ project.name }}</h1>
+      <p class="noselect" :class="{ 'secondary-text': project.description === '' }">{{ project.description === "" ? "No description" : project.description }}</p>
     </div>
   </div>
 </template>
@@ -20,12 +15,13 @@
 <script>
 export default {
   name: 'ProjectCard',
-  props: ['name','type','description'],
+  props: ['project'],
   methods: {
     openContextMenu() {
       console.log('Open context menu here');
     },
-    redirectToProject() {
+    openProject() {
+      this.$router.push('/project/'+this.project.id)
       console.log("redirecting");
     }
   }
@@ -36,7 +32,6 @@ export default {
   @import '~@/scss/colors';
   .project-card {
     flex: 1 0 0;
-    cursor: pointer;
     min-width: 350px;
     margin: 20px;
     border-radius: 20px;
@@ -77,31 +72,14 @@ export default {
       margin: 4px 0px 0px 20px;
     }
     h1 {
+      cursor: pointer;
       margin: 0px 0px 0 20px;
-    }
-  }
-
-  #project-type {
-    display: flex;
-    justify-content: flex-end;
-    text-align: center;
-    div {
-      position: relative;
-      bottom: 20px;
-      right: 20px;
-    }
-    h2 {
-      font-size: 1.5em;
-      line-height: 50%;
     }
   }
 
   .secondary-text {
     color: $color-font-main-light;
   }
-
-
-
 
 
 </style>

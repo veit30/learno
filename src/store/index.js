@@ -7,12 +7,12 @@ export default createStore({
       {
         id: 0,
         name: "Numberquiz",
-        type: "quiz",
         description: "",
-        questions: [
+        items: [
           {
             id: 0,
             text: "How much is 1+1?",
+            type: 'quiz',
             answers: [
               {
                 id: 0,
@@ -40,6 +40,7 @@ export default createStore({
           {
             id: 1,
             text: "How much is 2+2?",
+            type: 'quiz',
             answers: [
               {
                 id: 0,
@@ -69,12 +70,12 @@ export default createStore({
       {
         id: 1,
         name: "Register One",
-        type: "register",
         description: "I am an example register",
-        questions: [
+        items: [
           {
             id: 0,
             text: "How much is 1+1?",
+            type: 'quiz',
             answers: [
               {
                 id: 0,
@@ -102,6 +103,7 @@ export default createStore({
           {
             id: 1,
             text: "How much is 2+2?",
+            type: 'quiz',
             answers: [
               {
                 id: 0,
@@ -135,14 +137,21 @@ export default createStore({
       return state.projects;
     },
     getProjectById: (state) => (id) => {
-      return state.projects.find(project => project.id === id)
+      return state.projects.find(project => project.id === parseInt(id))
     },
   },
   mutations: {
     setProjects: (state, projects) => {
       state.projects = projects;
     },
-    addProject: (state, project) => {
+    addProject: (state, {title, description}) => {
+      title = title || "New Project"
+      let project = {
+        name: title,
+        description,
+        id: uid(16),
+        items: []
+      }
       state.projects.push(project);
     },
     removeProject: (state, project) => {

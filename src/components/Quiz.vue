@@ -1,6 +1,6 @@
 <template>
   <div class="quiz">
-    <QuizCard v-for="q in questions" :key="q.id" :question="q" :answers="q.answers" :description="q.description"></QuizCard>
+    <QuizCard v-for="q in items" :key="q.id" :question="q" :answers="q.answers" :description="q.description"></QuizCard>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   },
   created() {
     let project = this.getProjectById(0);
-    this.questions = project.questions;
+    this.items = project.items;
   }
 }
 
